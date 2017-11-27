@@ -6,7 +6,7 @@
 class SalariedEmployee : public Employee
 {
     public:
-        //SalariedEmployee();
+        SalariedEmployee(int employeeNumber, string name, string address, string phone, double salary);
         
         void   setSalary(double setS);
         double getSalary();
@@ -15,7 +15,7 @@ class SalariedEmployee : public Employee
         double calcPay();
         void   printCheck();
         
-        static SalariedEmployee read(ifstream&);
+        static SalariedEmployee* read(ifstream&);
         
     protected:
         SalariedEmployee() = default;

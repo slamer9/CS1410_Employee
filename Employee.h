@@ -19,6 +19,8 @@ using namespace std;
 #define benifitCostPercent 5.24
 #define delimitningChar '|'
 
+bool debugging = false;
+
 class Employee
 {
    public:

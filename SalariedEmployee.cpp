@@ -1,9 +1,19 @@
 #include "SalariedEmployee.h"
 
+SalariedEmployee::SalariedEmployee(int employeeNumber, string name, string address, string phone, double salary)
+{
+    this->employeeNumber = employeeNumber;
+    this->name = name;
+    this->address = address;
+    this->phone = phone;
+    this->salary = salary;
+}
+
 SalariedEmployee SalariedEmployee::read(ifstream& attachedFile)
 {
     SalariedEmployee myHourlyEmployee = new SalariedEmployee;
     myHourlyEmployee.readData(attachedFile);
+    return myHourlyEmployee&;
 }
 
 void readData(ifstream& attachedFile)

@@ -1,10 +1,20 @@
 #include "HourlyEmployee.h"
 
+HourlyEmployee::HourlyEmployee(int employeeNumber, string name, string address, string phone, double weeklyHoursWorked, double hourlyWage)
+{
+    this->employeeNumber = employeeNumber;
+    this->name = name;
+    this->address = address;
+    this->phone = phone;
+    this->weeklyHoursWorked = weeklyHoursWorked;
+    this->hourlyWage = hourlyWage;
+}
 
 HourlyEmployee HourlyEmployee::read(ifstream& attachedFile)
 {
     HourlyEmployee myHourlyEmployee = new HourlyEmployee;
     myHourlyEmployee.readData(attachedFile);
+    return myHourlyEmployee&;
 }
 
 void readData(ifstream& attachedFile)

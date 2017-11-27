@@ -18,6 +18,8 @@ int main()
     string fileName;
     ofstream userFileOStream;
     ifstream userFileIFstream;
+    
+    vector<Employee*> employeeList;
     try
     {
         firstInputGood = false;
@@ -25,7 +27,7 @@ int main()
         fileName = "";
         
         cout << instructionString1;
-        while(!firstInputGood)
+        while(!firstInputGood)  //Get first input
         {
             cin >> selection;
             if(cin.fail())
@@ -56,34 +58,56 @@ int main()
         
         cout << "Please enter a file name: ";
         cin >> fileName;
-        if(selection == 1)  //RUN OPTION 1 ********************************* WRITE
+        if(selection == 1)  //RUN OPTION 1 ********************************* 
         {
-            cout << "\nThis is your fileName: " << fileName << endl; //Debugging    ****************************
+            if(debugging == true) //Debugging    ****************************
+            {
+                cout << "\nThis is your fileName: " << fileName << endl;
+            }
             
             userFileOStream.open(fileName);
             
-            Employee joe(37, 10.00, 45.00, "Joe Brown", "123 Main St.", "123-6788");
-            Employee sam(21, 12.00, 30.00, "Sam Jones", "45 East State", "661-9000");
-            Employee mary(15, 15.00, 40.00, "Mary Smith", "12 High Street", "401-8900");
+            HourlyEmployee   harry(1, "H. Potter", "Privet Drive", "201-9090", 40, 12.00);
+            SalariedEmployee alvis(2, "A. Dumbledore", "Hogwarts", "803-1230", 1200);
+            HourlyEmployee   ron(3, "R. Weasley", "The Burrow", "892-2000", 40, 10.00);
+            SalariedEmployee rubius(4, "R. Hagrid", "Hogwarts", "910-8765", 1000);
             
-            joe.write(userFileOStream);
-            sam.write(userFileOStream);
-            mary.write(userFileOStream);
+            employeeList.push_back(harry&);
+            employeeList.push_back(alvis&);
+            employeeList.push_back(ron&);
+            employeeList.push_back(rubius&);
+            
+            for(int i = 0; i < employeeList.size(); i++)
+            {
+                (employeeList.at(i)).write(userFileOStream);
+            }
             
             cout << "Data file created ... you can now run option 2." << endl;
         } else if (selection == 2)  //RUN OPTION 2 ************************* READ
         {
-            cout << "\nThis is your fileName: " << fileName << endl; //Debugging    ****************************
+            if(debugging == true) //Debugging    ****************************
+            {
+                cout << "\nThis is your fileName: " << fileName << endl;
+            }
             
             userFileIFstream.open(fileName);
             
-            Employee Employee1 = Employee::read(userFileIFstream);
-            Employee Employee2 = Employee::read(userFileIFstream);
-            Employee Employee3 = Employee::read(userFileIFstream);
+            Employee* Employee1 = Employee::read(userFileIFstream);
+            Employee* Employee2 = Employee::read(userFileIFstream);
+            Employee* Employee3 = Employee::read(userFileIFstream);
+            Employee* Employee4 = Employee::read(userFileIFstream);
             
-            Employee1.printCheck();
-            Employee2.printCheck();
-            Employee3.printCheck();
+            employeeList.clear();
+            employeeList.push_back(Employee1);
+            employeeList.push_back(Employee2);
+            employeeList.push_back(Employee3);
+            employeeList.push_back(Employee4);
+            
+            for(int i = 0; i < employeeList.size(); i++)
+            {
+                (employeeList.at(i)).printCheck();
+            }
+            
         } else {
             //cout << "ERROR IN FILE: " << __FILE__ << ", LINE: " __LINE__ << endl << "NOW EXITING." << endl;   ***************************!
             //Throw program ending exception

@@ -6,7 +6,7 @@
 class HourlyEmployee : public Employee
 {
     public:
-        //HourlyEmployee();
+        HourlyEmployee(int employeeNumber, string name, string address, string phone, double weeklyHoursWorked, double hourlyWage);
         
         void   setHourlyWage(double setH);
         void   setWeeklyHoursWorked(double setW);
@@ -17,7 +17,7 @@ class HourlyEmployee : public Employee
         double calcPay();
         void   printCheck();
         
-        static HourlyEmployee read(ifstream&);
+        static HourlyEmployee* read(ifstream&);
         
     protected:
         HourlyEmployee() = default;
