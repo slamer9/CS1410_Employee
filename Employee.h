@@ -1,3 +1,6 @@
+#ifndef  Employee_header
+#define  Employee_header
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -7,12 +10,13 @@
 #include <exception>
 //#include <vector>     //#include <cstring>    //#include <algorithm>// std::sort    //#include <unistd.h> //sleep();      //#include <limits>
 
+using namespace std;
+
 #define overTimeScaler 1.5
 #define overTimeHours 40
 #define federalTaxPercent 20
 #define stateTaxPercent   7.5
-
-using namespace std;
+#define delimitningChar '|'
 
 class Employee
 {
@@ -36,7 +40,7 @@ class Employee
       virtual void printCheck();
       
    protected:
-      Employee();
+      Employee() = default;
       Employee(int employeeNumber, string name, string address, string phone);
       void readData(ifstream&);
    
@@ -64,3 +68,5 @@ class EmployeeException : public exception
    private:
       string errorDetails;
 };
+
+#endif

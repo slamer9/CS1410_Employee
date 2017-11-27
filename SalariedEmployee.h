@@ -1,21 +1,27 @@
+#ifndef  SalariedEmployee_header
+#define  SalariedEmployee_header
+
 #include "Employee.h"
 
-class SalariedEmployee :: Employee
+class SalariedEmployee : Employee
 {
     public:
-        SalariedEmployee();
+        //SalariedEmployee();
         
-        void setSalary(double setS);
+        void   setSalary(double setS);
         double getSalary();
 
-        void write(ofstream&);
+        void   write(ofstream&);
         double calcPay();
-        void printCheck();
+        void   printCheck();
         
         static SalariedEmployee read(ifstream&);
+        
     protected:
         SalariedEmployee() = default;
         void readData(ifstream&);
     private:
         double salary;
-}
+};
+
+#endif
