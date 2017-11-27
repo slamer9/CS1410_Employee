@@ -23,13 +23,45 @@ void readData(ifstream& attachedFile)
     }
     
     this->Employee::readData();
-    
-    stringbuf sb;
-    
-    attachedFile.get(sb, delimitningChar);
-    this->hourlyWage = sb.str();
-    attachedFile.ignore();  //Ignores delimiting character
 
     getline(attachedFile, dataString);
-    this->weeklyHoursWorked = stod(dataString);
+    this->salary = stod(dataString);
+}
+
+void write(ofstream& attachedFile)
+{
+    string errorString;
+    if(!attachedFile.good())
+    {
+        errorString = "\nUnable to write to file.\n";
+        throw EmployeeException(errorString);
+    }
+    
+    this->Employee::write(attachedFile);
+    
+    attachedFile << this->salary << deliminingChar;
+}
+
+void printCheck()
+{
+    this->Employee::printCheck();
+    
+    cout << "Salary: " << fixed << setprecision(2);
+    cout << "Salary: " << fixed << setprecision(2) << this->salary << endl << endl << endl << endl << endl;
+}
+
+double Employee::calcPay()
+{
+    double benifitCost;
+    double federalTax;
+    double stateTax;
+    double netPay;
+    
+    federalTax = this->salary * federalTaxPercent / 100;
+    stateTax = this->salary * stateTaxPercent / 100;
+    benifitCost = this->salary * benifitCostPercent / 100;
+    
+    netPay = this->salary - federalTax - stateTax - benifitCost;
+    
+    return netPay;
 }

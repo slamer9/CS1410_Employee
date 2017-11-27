@@ -16,6 +16,7 @@ using namespace std;
 #define overTimeHours 40
 #define federalTaxPercent 20
 #define stateTaxPercent   7.5
+#define benifitCostPercent 5.24
 #define delimitningChar '|'
 
 class Employee
@@ -35,8 +36,8 @@ class Employee
       void   setAddress(string setA);     //
       void   setPhone(string setP);       //
       
-      void   write(ofstream&);            //Writes Employee data to a file.
-      double calcPay();
+      virtual void   write(ofstream&);    //Writes Employee data to a file.
+      virtual double calcPay();
       virtual void printCheck();
       
    protected:

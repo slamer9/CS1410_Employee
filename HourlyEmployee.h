@@ -3,7 +3,7 @@
 
 #include "Employee.h"
 
-class HourlyEmployee : Employee
+class HourlyEmployee : public Employee
 {
     public:
         //HourlyEmployee();

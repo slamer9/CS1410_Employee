@@ -39,35 +39,24 @@ string Employee::getPhone()
 
 void Employee::write(ofstream& attachedFile)    //***12.8
 {
-    string errorString;
-    
-    if(!attachedFile.good())
-    {
-        errorString = "\nUnable to write to file.\n";
-        throw EmployeeException(errorString);
-    }
-    
-    //FIX ME
-    //COMPLETE FUNCTION
+    attachedFile << this->employeeNumber << deliminingChar;
+    attachedFile << this->name << deliminingChar;
+    attachedFile << this->address << deliminingChar;
+    attachedFile << this->phone << deliminingChar;
 }
 
-double Employee::calcPay()                      //***12.8
-{
-    double grossPay;
-    double federalTax;
-    double stateTax;
-    double netPay;
-
-    //FIX ME
-    //COMPLETE FUNCTION
-    
-    return netPay;
-}
+// double Employee::calcPay()                      //***12.8
+// {
+//     //FIX ME
+//     //COMPLETE FUNCTION
+// }
 
 void Employee::printCheck()                     //***12.8
 {
-    //FIX ME
-    //COMPLETE FUNCTION
+    cout << endl << endl << endl;
+    cout << "....................UVU Computer Science Dept................................." << endl << endl << endl;
+    cout << "Pay to the order of " << this->name << "....................................$" << fixed << setprecision(2) << this->calcPay() << endl << endl << endl; //IS "this->calcPay()" A VALID CALL?
+    cout << "United Community Credit Union" << endl << ".............................................................................." << endl << endl;
 }
 
 void Employee::readData(ifstream& attachedFile)
