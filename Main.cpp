@@ -72,15 +72,20 @@ int main()
             HourlyEmployee   ron(3, "R. Weasley", "The Burrow", "892-2000", 40, 10.00);
             SalariedEmployee rubius(4, "R. Hagrid", "Hogwarts", "910-8765", 1000);
             
-            employeeList.push_back(harry&);
-            employeeList.push_back(alvis&);
-            employeeList.push_back(ron&);
-            employeeList.push_back(rubius&);
+            // employeeList.push_back(harry&);          //FIX ME
+            // employeeList.push_back(alvis&);          //NOT WORKING PROPERLY, DOING ROUND ABOUT WAY INSTEAD
+            // employeeList.push_back(ron&);
+            // employeeList.push_back(rubius&);
             
-            for(int i = 0; i < employeeList.size(); i++)
-            {
-                (employeeList.at(i)).write(userFileOStream);
-            }
+            // for(unsigned int i = 0; i < employeeList.size(); i++)
+            // {
+            //     (employeeList.at(i)).write(userFileOStream);
+            // }
+            
+            harry.write(userFileOStream);
+            alvis.write(userFileOStream);
+            ron.write(userFileOStream);
+            rubius.write(userFileOStream);
             
             cout << "Data file created ... you can now run option 2." << endl;
         } else if (selection == 2)  //RUN OPTION 2 ************************* READ
@@ -92,10 +97,10 @@ int main()
             
             userFileIFstream.open(fileName);
             
-            Employee* Employee1 = Employee::read(userFileIFstream);
-            Employee* Employee2 = Employee::read(userFileIFstream);
-            Employee* Employee3 = Employee::read(userFileIFstream);
-            Employee* Employee4 = Employee::read(userFileIFstream);
+            Employee* Employee1 = HourlyEmployee::read(userFileIFstream);
+            Employee* Employee2 = SalariedEmployee::read(userFileIFstream);
+            Employee* Employee3 = HourlyEmployee::read(userFileIFstream);
+            Employee* Employee4 = SalariedEmployee::read(userFileIFstream);
             
             employeeList.clear();
             employeeList.push_back(Employee1);
@@ -103,10 +108,14 @@ int main()
             employeeList.push_back(Employee3);
             employeeList.push_back(Employee4);
             
-            for(int i = 0; i < employeeList.size(); i++)
+            for(unsigned int i = 0; i < employeeList.size(); i++)
             {
-                (employeeList.at(i)).printCheck();
+                (employeeList.at(i))->printCheck();
             }
+            // Employee1->printCheck();
+            // Employee2->printCheck();
+            // Employee3->printCheck();
+            // Employee4->printCheck();
             
         } else {
             //cout << "ERROR IN FILE: " << __FILE__ << ", LINE: " __LINE__ << endl << "NOW EXITING." << endl;   ***************************!

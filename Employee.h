@@ -8,7 +8,7 @@
 #include <sstream> //String stream
 #include <stdexcept>
 #include <exception>
-//#include <vector>     //#include <cstring>    //#include <algorithm>// std::sort    //#include <unistd.h> //sleep();      //#include <limits>
+#include <vector>     //#include <cstring>    //#include <algorithm>// std::sort    //#include <unistd.h> //sleep();      //#include <limits>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ using namespace std;
 #define federalTaxPercent 20
 #define stateTaxPercent   7.5
 #define benifitCostPercent 5.24
-#define delimitningChar '|'
+#define delimitingChar '|'
 
 bool debugging = false;
 

@@ -21,7 +21,7 @@ class HourlyEmployee : public Employee
         
     protected:
         HourlyEmployee() = default;
-        void readData(ifstream&);
+        void   readData(ifstream&);
     private:
         double hourlyWage;
         double weeklyHoursWorked;

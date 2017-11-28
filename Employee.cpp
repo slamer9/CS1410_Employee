@@ -2,6 +2,14 @@
 
 //char deliminingChar =  '|'; // ***10.5, line is located elseware in later projects.
 
+Employee::Employee(int employeeNumber, string name, string address, string phone)
+{
+    this->employeeNumber = employeeNumber;
+    this->name = name;
+    this->address = address;
+    this->phone = phone;
+}
+
 void Employee::setName(string setN)
 {
     this->name = setN;
@@ -39,10 +47,10 @@ string Employee::getPhone()
 
 void Employee::write(ofstream& attachedFile)    //***12.8
 {
-    attachedFile << this->employeeNumber << deliminingChar;
-    attachedFile << this->name << deliminingChar;
-    attachedFile << this->address << deliminingChar;
-    attachedFile << this->phone << deliminingChar;
+    attachedFile << this->employeeNumber << delimitingChar;
+    attachedFile << this->name << delimitingChar;
+    attachedFile << this->address << delimitingChar;
+    attachedFile << this->phone << delimitingChar;
 }
 
 // double Employee::calcPay()                      //***12.8
@@ -63,19 +71,19 @@ void Employee::readData(ifstream& attachedFile)
 {
     stringbuf sb;
     
-    attachedFile.get(sb, delimitningChar);
+    attachedFile.get(sb, delimitingChar);
     this->employeeNumber = stoi(sb.str());
     attachedFile.ignore();  //Ignores delimiting character
     
-    attachedFile.get(sb, delimitningChar);
+    attachedFile.get(sb, delimitingChar);
     this->name = sb.str();
     attachedFile.ignore();  //Ignores delimiting character
     
-    attachedFile.get(sb, delimitningChar);
+    attachedFile.get(sb, delimitingChar);
     this->address = sb.str();
     attachedFile.ignore();  //Ignores delimiting character
     
-    attachedFile.get(sb, delimitningChar);
+    attachedFile.get(sb, delimitingChar);
     this->phone = sb.str();
     attachedFile.ignore();  //Ignores delimiting character
 }

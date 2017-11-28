@@ -1,23 +1,19 @@
 #include "HourlyEmployee.h"
 
-HourlyEmployee::HourlyEmployee(int employeeNumber, string name, string address, string phone, double weeklyHoursWorked, double hourlyWage)
+HourlyEmployee::HourlyEmployee(int employeeNumber, string name, string address, string phone, double weeklyHoursWorked, double hourlyWage) : Employee(employeeNumber, name, address, phone)
 {
-    this->employeeNumber = employeeNumber;
-    this->name = name;
-    this->address = address;
-    this->phone = phone;
     this->weeklyHoursWorked = weeklyHoursWorked;
     this->hourlyWage = hourlyWage;
 }
 
-HourlyEmployee HourlyEmployee::read(ifstream& attachedFile)
+HourlyEmployee* HourlyEmployee::read(ifstream& attachedFile)
 {
     HourlyEmployee myHourlyEmployee = new HourlyEmployee;
     myHourlyEmployee.readData(attachedFile);
     return myHourlyEmployee&;
 }
 
-void readData(ifstream& attachedFile)
+void HourlyEmployee::readData(ifstream& attachedFile)
 {
     string errorString;
     string dataString;
@@ -37,7 +33,7 @@ void readData(ifstream& attachedFile)
     
     stringbuf sb;
     
-    attachedFile.get(sb, delimitningChar);
+    attachedFile.get(sb, delimitingChar);
     this->hourlyWage = sb.str();
     attachedFile.ignore();  //Ignores delimiting character
 
@@ -45,7 +41,7 @@ void readData(ifstream& attachedFile)
     this->weeklyHoursWorked = stod(dataString);
 }
 
-void write(ofstream& attachedFile)
+void HourlyEmployee::write(ofstream& attachedFile)
 {
     string errorString;
     if(!attachedFile.good())
@@ -56,11 +52,11 @@ void write(ofstream& attachedFile)
     
     this->Employee::write(attachedFile);
     
-    attachedFile << this->hourlyWage << deliminingChar;
+    attachedFile << this->hourlyWage << delimitingChar;
     attachedFile << this->weeklyHoursWorked << endl;
 }
 
-void printCheck()
+void HourlyEmployee::printCheck()
 {
     this->Employee::printCheck();
     
@@ -68,7 +64,7 @@ void printCheck()
     cout << "Hourly wage: " << this->hourlyWage << endl << endl << endl << endl << endl;
 }
 
-double Employee::calcPay()
+double HourlyEmployee::calcPay()
 {
     double grossPay;
     double federalTax;

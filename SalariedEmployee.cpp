@@ -2,10 +2,6 @@
 
 SalariedEmployee::SalariedEmployee(int employeeNumber, string name, string address, string phone, double salary)
 {
-    this->employeeNumber = employeeNumber;
-    this->name = name;
-    this->address = address;
-    this->phone = phone;
     this->salary = salary;
 }
 
@@ -16,7 +12,7 @@ SalariedEmployee SalariedEmployee::read(ifstream& attachedFile)
     return myHourlyEmployee&;
 }
 
-void readData(ifstream& attachedFile)
+void SalariedEmployee::readData(ifstream& attachedFile)
 {
     string errorString;
     string dataString;
@@ -38,7 +34,7 @@ void readData(ifstream& attachedFile)
     this->salary = stod(dataString);
 }
 
-void write(ofstream& attachedFile)
+void SalariedEmployee::write(ofstream& attachedFile)
 {
     string errorString;
     if(!attachedFile.good())
@@ -49,10 +45,10 @@ void write(ofstream& attachedFile)
     
     this->Employee::write(attachedFile);
     
-    attachedFile << this->salary << deliminingChar;
+    attachedFile << this->salary << endl;
 }
 
-void printCheck()
+void SalariedEmployee::printCheck()
 {
     this->Employee::printCheck();
     
@@ -60,7 +56,7 @@ void printCheck()
     cout << "Salary: " << fixed << setprecision(2) << this->salary << endl << endl << endl << endl << endl;
 }
 
-double Employee::calcPay()
+double SalariedEmployee::calcPay()
 {
     double benifitCost;
     double federalTax;
